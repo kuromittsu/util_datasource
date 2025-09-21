@@ -2,7 +2,9 @@
 
 ## Install
 
-`go get github.com/kuromittsu/util_datasource`
+```
+go get github.com/kuromittsu/util_datasource
+```
 
 ## Available source
 
