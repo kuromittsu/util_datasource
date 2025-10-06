@@ -1,6 +1,6 @@
 package util_datasource
 
-type DatasourceBaseConfig struct {
+type datasourceBaseConfig struct {
 	Host     string
 	Port     string
 	Username string
