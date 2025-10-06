@@ -10,7 +10,7 @@ import (
 )
 
 type postgresProvider struct {
-	ServiceName string
+	DatabaseName string
 }
 
 func (d *postgresProvider) GetPlaceholder() string {
@@ -23,7 +23,7 @@ func (d *postgresProvider) GetDSN(config datasourceBaseConfig) string {
 		config.Port,
 		config.Username,
 		config.Password,
-		d.ServiceName,
+		d.DatabaseName,
 	)
 }
 

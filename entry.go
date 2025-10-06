@@ -19,9 +19,9 @@ func UseMysqlProvider(databaseName string) *mysqlProvider {
 	}
 }
 
-func UsePostgresProvider(serviceName string) *postgresProvider {
+func UsePostgresProvider(databaseName string) *postgresProvider {
 	return &postgresProvider{
-		ServiceName: serviceName,
+		DatabaseName: databaseName,
 	}
 }
 
