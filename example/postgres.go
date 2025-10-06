@@ -12,9 +12,9 @@ func testingPostgres() {
 	conn := util_datasource.CreateNewConnection().SetConfig(util_datasource.BaseConfig(
 		"localhost",
 		"5432",
-		"your_username",
-		"your_password",
-	)).SetProvider(util_datasource.UsePostgresProvider("your_service_name")).SetMaxAttempt(5)
+		"username",
+		"password",
+	)).SetProvider(util_datasource.UsePostgresProvider("database_name")).SetMaxAttempt(5)
 
 	fmt.Println("opening connection ...")
 	if err := conn.OpenConnection(); err != nil {
