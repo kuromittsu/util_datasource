@@ -9,15 +9,15 @@ import (
 	_ "github.com/lib/pq"
 )
 
-type PostgresProvider struct {
+type postgresProvider struct {
 	ServiceName string
 }
 
-func (d *PostgresProvider) GetPlaceholder() string {
+func (d *postgresProvider) GetPlaceholder() string {
 	return "$"
 }
 
-func (d *PostgresProvider) GetDSN(config DatasourceBaseConfig) string {
+func (d *postgresProvider) GetDSN(config datasourceBaseConfig) string {
 	return fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
 		config.Host,
 		config.Port,
@@ -27,7 +27,7 @@ func (d *PostgresProvider) GetDSN(config DatasourceBaseConfig) string {
 	)
 }
 
-func (d *PostgresProvider) OpenConnection(dsn string, maxAttempts int) (*sqlx.DB, error) {
+func (d *postgresProvider) OpenConnection(dsn string, maxAttempts int) (*sqlx.DB, error) {
 
 	var errorList []string
 

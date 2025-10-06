@@ -9,15 +9,15 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-type MysqlProvider struct {
+type mysqlProvider struct {
 	DatabaseName string
 }
 
-func (d *MysqlProvider) GetPlaceholder() string {
+func (d *mysqlProvider) GetPlaceholder() string {
 	return ""
 }
 
-func (d *MysqlProvider) GetDSN(config DatasourceBaseConfig) string {
+func (d *mysqlProvider) GetDSN(config datasourceBaseConfig) string {
 	return fmt.Sprintf("%s:%s@tcp(%s:%s)/%s",
 		config.Username,
 		config.Password,
@@ -27,7 +27,7 @@ func (d *MysqlProvider) GetDSN(config DatasourceBaseConfig) string {
 	)
 }
 
-func (d *MysqlProvider) OpenConnection(dsn string, maxAttempts int) (*sqlx.DB, error) {
+func (d *mysqlProvider) OpenConnection(dsn string, maxAttempts int) (*sqlx.DB, error) {
 
 	var errorList []string
 

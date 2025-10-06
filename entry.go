@@ -1,11 +1,11 @@
 package util_datasource
 
-func CreateNewConnection() *DatasourceConnection {
-	return &DatasourceConnection{}
+func CreateNewConnection() *datasourceConnection {
+	return &datasourceConnection{}
 }
 
-func BaseConfig(host, port, username, password string) DatasourceBaseConfig {
-	return DatasourceBaseConfig{
+func BaseConfig(host, port, username, password string) datasourceBaseConfig {
+	return datasourceBaseConfig{
 		Host:     host,
 		Port:     port,
 		Username: username,
@@ -13,20 +13,20 @@ func BaseConfig(host, port, username, password string) DatasourceBaseConfig {
 	}
 }
 
-func UseMysqlProvider(databaseName string) *MysqlProvider {
-	return &MysqlProvider{
+func UseMysqlProvider(databaseName string) *mysqlProvider {
+	return &mysqlProvider{
 		DatabaseName: databaseName,
 	}
 }
 
-func UsePostgresProvider(serviceName string) *PostgresProvider {
-	return &PostgresProvider{
+func UsePostgresProvider(serviceName string) *postgresProvider {
+	return &postgresProvider{
 		ServiceName: serviceName,
 	}
 }
 
-func UseOracleProvider(serviceName string) *OracleProvider {
-	return &OracleProvider{
+func UseOracleProvider(serviceName string) *oracleProvider {
+	return &oracleProvider{
 		ServiceName: serviceName,
 	}
 }

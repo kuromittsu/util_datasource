@@ -9,15 +9,15 @@ import (
 	_ "github.com/sijms/go-ora/v2"
 )
 
-type OracleProvider struct {
+type oracleProvider struct {
 	ServiceName string
 }
 
-func (d *OracleProvider) GetPlaceholder() string {
+func (d *oracleProvider) GetPlaceholder() string {
 	return ":"
 }
 
-func (d *OracleProvider) GetDSN(config DatasourceBaseConfig) string {
+func (d *oracleProvider) GetDSN(config datasourceBaseConfig) string {
 	return fmt.Sprintf("oracle://%s:%s@%s:%s/%s",
 		config.Username,
 		config.Password,
@@ -27,7 +27,7 @@ func (d *OracleProvider) GetDSN(config DatasourceBaseConfig) string {
 	)
 }
 
-func (d *OracleProvider) OpenConnection(dsn string, maxAttempts int) (*sqlx.DB, error) {
+func (d *oracleProvider) OpenConnection(dsn string, maxAttempts int) (*sqlx.DB, error) {
 
 	var errorList []string
 

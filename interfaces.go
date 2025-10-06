@@ -4,12 +4,12 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-type DatasourceProvider interface {
+type datasourceProvider interface {
 
 	/*
 		Get DSN with base config
 	*/
-	GetDSN(config DatasourceBaseConfig) string
+	GetDSN(config datasourceBaseConfig) string
 
 	/*
 		Open provider connection
