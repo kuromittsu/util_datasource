@@ -73,12 +73,7 @@ other functions see [sources](#sources)
 ### Example
 
 ```go
-import (
-  "fmt"
-	"os"
-
-  uds "github.com/kuromittsu/util_datasource"
-)
+// import uds "github.com/kuromittsu/util_datasource"
 
 // create new connection
 conn1 := uds.CreateNewConnection()
