@@ -1,7 +1,7 @@
 package util_datasource
 
-func CreateNewConnection() *datasourceConnection {
-	return &datasourceConnection{}
+func CreateNewConnection() *DatasourceConnection {
+	return &DatasourceConnection{}
 }
 
 func BaseConfig(host, port, username, password string) datasourceBaseConfig {
