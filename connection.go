@@ -4,7 +4,7 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-type datasourceConnection struct {
+type DatasourceConnection struct {
 	config datasourceBaseConfig
 
 	provider datasourceProvider
@@ -22,7 +22,7 @@ type datasourceConnection struct {
 	or
 	datasourceBaseConfig struct
 */
-func (d *datasourceConnection) SetConfig(config datasourceBaseConfig) *datasourceConnection {
+func (d *DatasourceConnection) SetConfig(config datasourceBaseConfig) *DatasourceConnection {
 
 	d.config = config
 	return d
@@ -34,7 +34,7 @@ func (d *datasourceConnection) SetConfig(config datasourceBaseConfig) *datasourc
 /*
 	you can use Use[Provider Name]Provider function
 */
-func (d *datasourceConnection) SetProvider(provider datasourceProvider) *datasourceConnection {
+func (d *DatasourceConnection) SetProvider(provider datasourceProvider) *DatasourceConnection {
 
 	d.provider = provider
 	return d
@@ -46,7 +46,7 @@ func (d *datasourceConnection) SetProvider(provider datasourceProvider) *datasou
 /*
 	max attempt for retry connect after error
 */
-func (d *datasourceConnection) SetMaxAttempt(value int) *datasourceConnection {
+func (d *DatasourceConnection) SetMaxAttempt(value int) *DatasourceConnection {
 
 	d.maxAttempt = value
 	return d
@@ -58,7 +58,7 @@ func (d *datasourceConnection) SetMaxAttempt(value int) *datasourceConnection {
 /*
 	open connection by provider DSN and max attempt
 */
-func (d *datasourceConnection) OpenConnection() error {
+func (d *DatasourceConnection) OpenConnection() error {
 
 	db, err := d.provider.OpenConnection(d.provider.GetDSN(d.config), d.maxAttempt)
 	if err != nil {
@@ -76,7 +76,7 @@ func (d *datasourceConnection) OpenConnection() error {
 /*
 	if connection is nil will auto call OpenConnection function
 */
-func (d *datasourceConnection) GetConn() *sqlx.DB {
+func (d *DatasourceConnection) GetConn() *sqlx.DB {
 
 	if d.db == nil {
 		d.OpenConnection()
@@ -92,7 +92,7 @@ func (d *datasourceConnection) GetConn() *sqlx.DB {
 	if connection is nil simply return nil,
 	if connection exist return error from Close function
 */
-func (d *datasourceConnection) Cleanup() error {
+func (d *DatasourceConnection) Cleanup() error {
 
 	if d.db != nil {
 		return nil
@@ -106,7 +106,7 @@ func (d *datasourceConnection) Cleanup() error {
 /*
 	return error from Ping function
 */
-func (d *datasourceConnection) Ping() error {
+func (d *DatasourceConnection) Ping() error {
 
 	return d.db.Ping()
 }
@@ -119,7 +119,7 @@ func (d *datasourceConnection) Ping() error {
 	if nil return true,
 	if not nil return false
 */
-func (d *datasourceConnection) JustPing() bool {
+func (d *DatasourceConnection) JustPing() bool {
 
 	return d.db.Ping() == nil
 }
@@ -138,7 +138,7 @@ func (d *datasourceConnection) JustPing() bool {
 	!!! if your query is write in specific provider format,
 	no need to use this function
 */
-func (d *datasourceConnection) SanitizeQuery(rawQuery string) string {
+func (d *DatasourceConnection) SanitizeQuery(rawQuery string) string {
 
 	return queryReplacePlaceholder(rawQuery, d.provider.GetPlaceholder())
 }
