@@ -19,34 +19,34 @@ go get github.com/kuromittsu/util_datasource
 - Datasource Connection
 
 ```go
-datasourceConnection
+DatasourceConnection
 
 // open connection by provider DSN and max attempt
-func(*datasourceConnection) OpenConnection() error
+func(*DatasourceConnection) OpenConnection() error
 
 // getting connection db, if connection is nil will auto call OpenConnection function
-func(*datasourceConnection) GetConn() *sqlx.DB
+func(*DatasourceConnection) GetConn() *sqlx.DB
 
 // close current connection
-func(*datasourceConnection) Cleanup() error
+func(*DatasourceConnection) Cleanup() error
 
 // testing connection
-func(*datasourceConnection) Ping() error
+func(*DatasourceConnection) Ping() error
 
 // testing connection but return bool
-func(*datasourceConnection) JustPing() bool
+func(*DatasourceConnection) JustPing() bool
 
 // filter / sanitize query base on provider
-func(*datasourceConnection) SanitizeQuery(rawQuery string) string
+func(*DatasourceConnection) SanitizeQuery(rawQuery string) string
 
 // set config for connection
-func(*datasourceConnection) SetConfig(config datasourceBaseConfig) *datasourceConnection
+func(*DatasourceConnection) SetConfig(config datasourceBaseConfig) *DatasourceConnection
 
 // set provider for connection
-func(*datasourceConnection) SetProvider(provider datasourceProvider) *datasourceConnection
+func(*DatasourceConnection) SetProvider(provider datasourceProvider) *DatasourceConnection
 
 // set max attempt for auto reconnect
-func(*datasourceConnection) SetMaxAttempt(value int) *datasourceConnection
+func(*DatasourceConnection) SetMaxAttempt(value int) *DatasourceConnection
 ```
 
 ### Functions
@@ -54,7 +54,7 @@ func(*datasourceConnection) SetMaxAttempt(value int) *datasourceConnection
 - Creating new connection
 
 ```go
-CreateNewConnection() *datasourceConnection
+CreateNewConnection() *DatasourceConnection
 ```
 
 - Base Config
