@@ -45,5 +45,5 @@ func (d *postgresProvider) OpenConnection(dsn string, maxAttempts int) (*sqlx.DB
 		time.Sleep(time.Second * time.Duration(i+1))
 	}
 
-	return nil, fmt.Errorf("result error | %v", strings.Join(errorList, ", "))
+	return nil, fmt.Errorf("error result(s):\n%v", strings.Join(errorList, ",\n"))
 }
