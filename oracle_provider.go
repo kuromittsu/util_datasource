@@ -13,6 +13,10 @@ type oracleProvider struct {
 	ServiceName string
 }
 
+func (d *oracleProvider) GetProviderName() string {
+	return "oracle"
+}
+
 func (d *oracleProvider) GetPlaceholder() string {
 	return ":"
 }

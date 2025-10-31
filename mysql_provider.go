@@ -13,6 +13,10 @@ type mysqlProvider struct {
 	DatabaseName string
 }
 
+func (d *mysqlProvider) GetProviderName() string {
+	return "mysql"
+}
+
 func (d *mysqlProvider) GetPlaceholder() string {
 	return ""
 }

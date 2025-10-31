@@ -13,6 +13,10 @@ type postgresProvider struct {
 	DatabaseName string
 }
 
+func (d *postgresProvider) GetProviderName() string {
+	return "postgres"
+}
+
 func (d *postgresProvider) GetPlaceholder() string {
 	return "$"
 }
