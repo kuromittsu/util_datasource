@@ -17,6 +17,9 @@ func testingPostgres() {
 	)).SetProvider(util_datasource.UsePostgresProvider("database_name")).SetMaxAttempt(5)
 
 	fmt.Println("opening connection ...")
+
+	fmt.Printf("provider name: %v\n", conn.GetProviderName())
+
 	if err := conn.OpenConnection(); err != nil {
 		fmt.Printf("error while opening connection | %v \n", err)
 		os.Exit(0)
