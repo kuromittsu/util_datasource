@@ -1,6 +1,8 @@
 package util_datasource
 
 import (
+	"errors"
+
 	"github.com/jmoiron/sqlx"
 )
 
@@ -41,6 +43,20 @@ func (d *DatasourceConnection) SetProvider(provider datasourceProvider) *Datasou
 }
 
 /*
+	Get provider name
+*/
+/*
+	Get provider name from provider
+*/
+func (d *DatasourceConnection) GetProviderName() string {
+
+	if d.provider == nil {
+		return ""
+	}
+	return d.provider.GetProviderName()
+}
+
+/*
 	Set max attempt
 */
 /*
@@ -59,6 +75,14 @@ func (d *DatasourceConnection) SetMaxAttempt(value int) *DatasourceConnection {
 	open connection by provider DSN and max attempt
 */
 func (d *DatasourceConnection) OpenConnection() error {
+
+	if d.provider == nil {
+		return errors.New("no provider yet, provider is required")
+	}
+
+	if d.maxAttempt < 1 {
+		d.maxAttempt = 1
+	}
 
 	db, err := d.provider.OpenConnection(d.provider.GetDSN(d.config), d.maxAttempt)
 	if err != nil {
