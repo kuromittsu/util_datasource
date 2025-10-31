@@ -20,4 +20,9 @@ type datasourceProvider interface {
 		Get placeholder
 	*/
 	GetPlaceholder() string
+
+	/*
+		Get provider name
+	*/
+	GetProviderName() string
 }
