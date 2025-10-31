@@ -45,6 +45,9 @@ func(*DatasourceConnection) SetConfig(config datasourceBaseConfig) *DatasourceCo
 // set provider for connection
 func(*DatasourceConnection) SetProvider(provider datasourceProvider) *DatasourceConnection
 
+// get provider name
+func(*DatasourceConnection) SetProviderName(provider datasourceProvider) *DatasourceConnection
+
 // set max attempt for auto reconnect
 func(*DatasourceConnection) SetMaxAttempt(value int) *DatasourceConnection
 ```
